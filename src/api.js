@@ -3,6 +3,7 @@ export const productData = [
         id:'bag',
         name:'Bag',
         image:'../assets/bag.jpg'
+        
     },
     {
         id:'banana',
@@ -37,7 +38,7 @@ export const productData = [
     {
         id:'cthulhu',
         name:'Cthulhu',
-        image:'../assets/chtulhu'
+        image:'../assets/cthulhu.jpg'
     },
     {
         id:'dog-duck',
@@ -52,7 +53,7 @@ export const productData = [
     {
         id:'pen',
         name:'Pen',
-        image:'../assets/pen/jpg'
+        image:'../assets/pen.jpg'
     },
     {
         id:'pet-sweep',
@@ -72,7 +73,7 @@ export const productData = [
     {
         id:'sweep',
         name:'Kid Sweep',
-        image:'../assets/sweep.jpg'
+        image:'../assets/sweep.png'
     },
     {
         id:'tauntaun',
