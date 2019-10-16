@@ -37,7 +37,7 @@ label.product-three {
 }
 
 input[type='radio'] {
-display: none;
+/* display: none; */
 }
 input:checked {
     border: solid 5px red;

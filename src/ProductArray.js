@@ -2,12 +2,6 @@ export class ProductArray {
     constructor(products) {
         this.products = products.slice();
     }
-
-
-    getProducts() {
-        return this.products;
-    }
-
     removeProductById(someId) {
         this.products.forEach(product => {
             if (someId === product.id) {
@@ -15,7 +9,6 @@ export class ProductArray {
             }
         });
     }
-
     getProductById(someId) {
         let productMatch;
     
@@ -26,25 +19,12 @@ export class ProductArray {
         });
         return productMatch;
     }
-    
     hasAnyProducts() {
         return this.products.length;
     }
-    
     getRandomProduct() {
         const randomProductIndex = Math.floor(Math.random() * this.products.length);
 
         return this.products[randomProductIndex];
     }
-
-    trackViews() {
-        this.totalViews++;
-    }
-
-    trackVotes() {
-        this.totalVotes++;
-    }
-
-
-
 }

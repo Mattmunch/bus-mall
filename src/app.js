@@ -6,22 +6,43 @@ const voteSpan = document.getElementById('vote-span');
 const submitButton = document.querySelector('button');
 const productImageTags = document.querySelectorAll('img');
 const productRadioTags = document.querySelectorAll('input');
-// const productName = document.getElementById('prodcut-name');
 const products = new ProductArray(productData);
 let votesRemaining = 25;
 let shownArray = [];
 let selectedArray = [];
+let randomProductOne;
+let randomProductTwo;
+let randomProductThree;
 
+// let previousProductOne = randomProductOne;
+// let previousProductTwo = randomProductTwo;
+// let previousProductThree = randomProductThree;
 
 voteSpan.textContent = votesRemaining;
 
-
+// const checkPrevious = () => {
+//     while (randomProductOne === previousProductOne || randomProductOne === previousProductTwo || randomProductOne === previousProductThree){
+//         randomProductOne = products.getRandomProduct();
+//     }
+//     while (randomProductTwo === previousProductOne || randomProductTwo === previousProductTwo || randomProductTwo === previousProductThree){
+//         randomProductTwo = products.getRandomProduct();
+//     }
+//     while (randomProductThree === previousProductOne || randomProductThree === previousProductTwo || randomProductThree === previousProductThree){
+//         randomProductThree = products.getRandomProduct();
+//     }
+//     while (randomProductOne === randomProductTwo || randomProductOne === randomProductThree) {
+//         randomProductOne = products.getRandomProduct();
+//     }
+//     while (randomProductTwo === randomProductThree) {
+//         randomProductTwo = products.getRandomProduct();
+//     }};
 
 
 const initializeProductButtons = () => {
-    let randomProductOne = products.getRandomProduct();
-    let randomProductTwo = products.getRandomProduct();
-    let randomProductThree = products.getRandomProduct();
+    // checkPrevious();
+    randomProductOne = products.getRandomProduct();
+    randomProductTwo = products.getRandomProduct();
+    randomProductThree = products.getRandomProduct();
 
     while (randomProductOne === randomProductTwo || randomProductOne === randomProductThree) {
         randomProductOne = products.getRandomProduct();
@@ -56,37 +77,53 @@ const initializeProductButtons = () => {
 
 };
 
-const incrementShown = (shownArray, choiceId) => {
-    let shown = compare(shownArray, choiceId);
+const incrementShown = (shownArray, choicesId) => {
+    let shown = compare(shownArray, choicesId);
     if (!shown) {
         shown = {
-            id: choiceId,
+            id: choicesId,
             quantity: 1
         };
         shownArray.push(shown);
     } else {
-        shown.timeShown++;
+        shown.quantity++;
+    }
+
+
+};
+const incrementSelected = (selectedArray, choiceId) => {
+    let selected = compare(selectedArray, choiceId);
+    if (!selected) {
+        selected = {
+            id: choiceId,
+            timesSelected: 1
+        };
+        selectedArray.push(selected);
+    } else {
+        selected.timesSelected++;
+        return;
+
     }
 };
 
+
 submitButton.addEventListener('click', () => {
     votesRemaining--;
-    initializeProductButtons();
     voteSpan.textContent = votesRemaining;
+    // debugger;
     if (votesRemaining === 0) {
         submitButton.disabled = true;
     }
-    
-    
+    let chosenProduct = document.querySelector('input:checked').value;
+    incrementSelected(selectedArray, chosenProduct);
+    initializeProductButtons();
+
+
 });
 
 
-
-
-
-
-
+console.log(selectedArray);
+console.log(shownArray);
 
 
 initializeProductButtons();
-

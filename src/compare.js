@@ -1,8 +1,10 @@
 export const compare = (array, choiceId) => {
+    let match;
     for (let i = 0; i < array.length; i++) {
         const choice = array[i];
         if (choice.id === choiceId) {
-            return choice;
+            match = choice;
         }
     }
+    return match;
 };
