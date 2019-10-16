@@ -12,12 +12,14 @@ const productImageTags = document.querySelectorAll('img');
 const productRadioTags = document.querySelectorAll('input');
 const products = new ProductArray(productData);
 let votesRemaining = 25;
+let countData = [];
+let idData = [];
 let shownArray = [];
 let selectedArray = [];
 let randomProductOne;
 let randomProductTwo;
 let randomProductThree;
-
+let resultData = shownArray.concat(selectedArray);
 let previousProductOne = randomProductOne;
 let previousProductTwo = randomProductTwo;
 let previousProductThree = randomProductThree;
@@ -47,7 +49,7 @@ const initializeProductButtons = () => {
     randomProductTwo = products.getRandomProduct();
     randomProductThree = products.getRandomProduct();
     checkPrevious();
-    
+
     while (randomProductOne === randomProductTwo || randomProductOne === randomProductThree) {
         randomProductOne = products.getRandomProduct();
     }
@@ -120,24 +122,55 @@ submitButton.addEventListener('click', () => {
     if (votesRemaining === 0) {
         submitButton.disabled = true;
         displayData(shownArray, selectedArray);
-        const element = document.getElementById('result-section');
-        element.classList.remove('hidden');
 
 
+    }
+    for (let i = 0; i < resultData.length; i++) {
+        idData.push(resultData[i].id + ' clikced');
+        idData.push(resultData[i].id + ' shown');
+        countData.push(resultData[i].count);
+        countData.push(resultData[i].shown);
     }
     let chosenProduct = document.querySelector('input:checked').value;
     incrementSelected(selectedArray, chosenProduct);
     initializeProductButtons();
 
-    
+
 
     console.log(selectedArray);
     console.log(shownArray);
 
-    
+
 });
 
 
+const renderChart = () => {
+    const ctx = document.getElementById('chart').getContext('2d');
 
+    const count = countData;
+    const labels = idData;
+    const labelColors = ['purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow'];
+
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Clicks',
+                data: count,
+                backgroundColor: labelColors
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+};
 
 initializeProductButtons();

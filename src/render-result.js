@@ -1,8 +1,9 @@
+
 export const renderResults = (shownArray, selectedArray) => {
     let resultsArray = [];
     shownArray.forEach(shown => {
         selectedArray.forEach(selected => {
-            if (shown.id === selected.id){
+            if (shown.id === selected.id) {
                 const percentage = Math.round((selected.timesSelected / shown.timesShown) * 100);
                 resultsArray.push(`You selected the ${shown.name} ${selected.timesSelected} out of ${shown.timesShown} times; ${percentage}%.`);
             }
@@ -25,4 +26,6 @@ export const displayData = (shownArray, selectedArray) => {
         const li = makeLi(result);
         ul.appendChild(li);
     });
+    return resultsArray;
+    
 };

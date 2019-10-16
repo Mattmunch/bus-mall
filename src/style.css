@@ -34,6 +34,10 @@ label.product-three {
     grid-column: 3/4;
     grid-row: 2/3;
 }
+canvas {
+    width: 75%;
+    height: 500px;
+  }
 
 
 #product-section label {
