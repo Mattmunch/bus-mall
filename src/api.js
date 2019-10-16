@@ -1,7 +1,7 @@
 export const productData = [
     {
         id:'bag',
-        name:'Bag',
+        name:'R2-D2 Suitcase',
         image:'../assets/bag.jpg'
         
     },
@@ -12,27 +12,27 @@ export const productData = [
     },
     {
         id:'bathroom',
-        name:'Bathroom',
+        name:'Ipad Bathroom Stand',
         image:'../assets/bathroom.jpg'
     },
     {
         id:'boots',
-        name:'Boots',
+        name:'Yellow Rain Boots',
         image:'../assets/boots.jpg'
     },
     {
         id:'breakfast',
-        name:'Breakfast',
+        name:'Breakfast Maker',
         image:'../assets/breakfast.jpg'
     },
     {
         id:'bubblegum',
-        name:'Bubblegum',
+        name:'Meatball Bubblegum',
         image:'../assets/bubblegum.jpg'
     },
     {
         id:'chair',
-        name:'Chair',
+        name:'Red Chair',
         image:'../assets/chair.jpg'
     },
     {
@@ -42,17 +42,17 @@ export const productData = [
     },
     {
         id:'dog-duck',
-        name:'Dog Duck',
+        name:'Dog Duck Mask',
         image:'../assets/dog-duck.jpg'
     },
     {
         id:'dragon',
-        name:'Dragon',
+        name:'Dragon Meat',
         image:'../assets/dragon.jpg'
     },
     {
         id:'pen',
-        name:'Pen',
+        name:'Pen Utensils',
         image:'../assets/pen.jpg'
     },
     {
@@ -62,12 +62,12 @@ export const productData = [
     },
     {
         id:'scissors',
-        name:'Scissors',
+        name:'Pizza Scissors',
         image:'../assets/scissors.jpg'
     },
     {
         id:'shark',
-        name:'Shark',
+        name:'Shark Sleeping Bag',
         image:'../assets/shark.jpg'
     },
     {
@@ -77,12 +77,12 @@ export const productData = [
     },
     {
         id:'tauntaun',
-        name:'TaunTaun',
+        name:'TaunTaun Sleeping Bag',
         image:'../assets/tauntaun.jpg'
     },
     {
         id:'unicorn',
-        name:'Unicorn',
+        name:'Unicorn Meat',
         image:'../assets/unicorn.jpg'
     },
     {
@@ -92,7 +92,7 @@ export const productData = [
     },
     {
         id:'water-can',
-        name:'Water Can',
+        name:'Water-Self Water Can',
         image:'../assets/water-can.jpg'
     },
     {

@@ -16,6 +16,10 @@ section.intro {
     grid-column: 1/4;
     grid-row: 1/2;
     text-align: center;
+    max-height: 500px;
+}
+input:checked + img {
+    border: 5px solid steelblue;
 }
 
 label.product-one {
@@ -37,7 +41,7 @@ label.product-three {
 }
 
 input[type='radio'] {
-/* display: none; */
+display: none;
 }
 input:checked {
     border: solid 5px red;
@@ -47,3 +51,8 @@ button {
  height: 40px;
 
 }
+
+#result-section.hidden {
+    display: none;
+}
+
