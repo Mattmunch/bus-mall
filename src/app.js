@@ -110,7 +110,7 @@ const incrementSelected = (selectedArray, choiceId) => {
 submitButton.addEventListener('click', () => {
     votesRemaining--;
     voteSpan.textContent = votesRemaining;
-    // debugger;
+    
     if (votesRemaining === 0) {
         submitButton.disabled = true;
     }
@@ -118,12 +118,12 @@ submitButton.addEventListener('click', () => {
     incrementSelected(selectedArray, chosenProduct);
     initializeProductButtons();
 
+    console.log(selectedArray);
+    console.log(shownArray);
 
 });
 
 
-console.log(selectedArray);
-console.log(shownArray);
 
 
 initializeProductButtons();
