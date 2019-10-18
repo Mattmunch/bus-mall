@@ -1,30 +1,27 @@
 import { ProductArray } from './ProductArray.js';
 import { productData } from './api.js';
 import { compare } from './compare.js';
-import { renderResults } from './render-result.js';
 import { displayData } from './render-result.js';
-
-
 
 const voteSpan = document.getElementById('vote-span');
 const submitButton = document.querySelector('button');
 const productImageTags = document.querySelectorAll('img');
 const productRadioTags = document.querySelectorAll('input');
+const resultSection = document.getElementById('result-section');
 const products = new ProductArray(productData);
 let votesRemaining = 25;
-let countData = [];
-let idData = [];
 let shownArray = [];
 let selectedArray = [];
+let labelsArray = [];
 let randomProductOne;
 let randomProductTwo;
 let randomProductThree;
-let resultData = shownArray.concat(selectedArray);
 let previousProductOne = randomProductOne;
 let previousProductTwo = randomProductTwo;
 let previousProductThree = randomProductThree;
-
 voteSpan.textContent = votesRemaining;
+let shownData = [];
+let selectedData = [];
 
 const checkPrevious = () => {
     while (randomProductOne === previousProductOne || randomProductOne === previousProductTwo || randomProductOne === previousProductThree) {
@@ -122,14 +119,21 @@ submitButton.addEventListener('click', () => {
     if (votesRemaining === 0) {
         submitButton.disabled = true;
         displayData(shownArray, selectedArray);
+        shownArray.forEach(item => {
+            labelsArray.push(item.name);
+        });
+        shownArray.forEach(item => {
+            shownData.push(item.timesShown);
+        });
+        
+        selectedArray.forEach(item => {
+            selectedData.push(item.timesSelected);
+        });
+        resultSection.classList.remove('hidden');
+        
+        renderChart();
 
 
-    }
-    for (let i = 0; i < resultData.length; i++) {
-        idData.push(resultData[i].id + ' clikced');
-        idData.push(resultData[i].id + ' shown');
-        countData.push(resultData[i].count);
-        countData.push(resultData[i].shown);
     }
     let chosenProduct = document.querySelector('input:checked').value;
     incrementSelected(selectedArray, chosenProduct);
@@ -147,18 +151,20 @@ submitButton.addEventListener('click', () => {
 const renderChart = () => {
     const ctx = document.getElementById('chart').getContext('2d');
 
-    const count = countData;
-    const labels = idData;
-    const labelColors = ['purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow', 'purple', 'yellow'];
-
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: labelsArray,
             datasets: [{
-                label: 'Clicks',
-                data: count,
-                backgroundColor: labelColors
+                label: 'Times product was selected',
+                data: selectedData,
+                backgroundColor: 'blue',
+                type:'bar'
+            }, {
+                label:'Times product was shown',
+                data: shownData,
+                backgroundColor:'red'
+
             }]
         },
         options: {
@@ -171,6 +177,7 @@ const renderChart = () => {
             }
         }
     });
+    return myChart;
 };
 
 initializeProductButtons();
