@@ -1,0 +1,3 @@
+# User Stories
+John (marketing research) - John wants to know what products are most likely to be purchased by people riding on a public transit bus. He wants to be able to keep track of how many times an image is selected over 25 rounds of voting
+Jill (poll participant) - As the study participant, Jill needs to be able to click on an image and submit it. Then she should be presented with 3 more images to pick from. she will do this 25 times.
